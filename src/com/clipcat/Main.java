@@ -22,6 +22,16 @@ public class Main {
 
     }
 
+    public static void delete(String name)
+    {
+        boolean isDeleted = DBManager.delete(name);
+        if(isDeleted) {
+            System.out.println("Data deleted successfully");
+        }else {
+            System.out.println("Data not found.");
+        }
+    }
+
     public static void save(String name)
     {
         // getting the data from the clipboard
@@ -70,6 +80,9 @@ public class Main {
 
             }else if(command.equalsIgnoreCase("restore")){
                 restore(argument);
+
+            }else if(command.equalsIgnoreCase("delete")){
+                delete(argument);
 
             }else if(command.equalsIgnoreCase("ls")) {
                 if(argument.length() > 0)

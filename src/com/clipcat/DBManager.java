@@ -91,6 +91,28 @@ public class DBManager {
     }
 
     /**
+     * Get a clipboard object from the database given a name.
+     * @param name  The name used to store the clipboard object.
+     * @return      The clipboard object with that name, if not found return null.
+     */
+    public static boolean delete(String name)
+    {
+        String sql = "DELETE FROM archive WHERE NAME= ?;";
+
+        try (PreparedStatement pstmt  = conn.prepareStatement(sql)){
+
+            pstmt.setString(1, name);
+            int n = pstmt.executeUpdate();
+            if(n > 0)
+                return true;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
+    /**
      * Get the names and types of all the clipboard objects in the database.
      *
      * @return A list of the names and ids and types of all the clipboard objects in the database.
