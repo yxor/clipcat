@@ -1,6 +1,9 @@
 # Compiled class file
 *.class
 
+out/
+.idea/
+*.jar
 # Log file
 *.log
 
